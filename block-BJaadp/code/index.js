@@ -16,18 +16,90 @@ let persons = [
 // NOTE: Use reduce method whereever you can to solve this exercise:
 
 // Find the average grade
+let grade =[];
+for(i=0; i<persons.length; i++){
+  grade.push(persons[i].grade);
+}
+console.log(grade);
+var reducer = ((cv,pv,index,grade)=> {
+  cv+=pv;
+  if(index === grade.length - 1){
+    return cv/grade.length;
+  }
+  else{
+    return cv;
+  }
+})
+let avgGrade= grade.reduce(reducer);
+console.log(avgGrade);
+
 
 // Find the average grade of male
-
+let gradeM=[];
+for(i=0;i< persons.length; i++){
+  if(persons[i].sex.includes('M')){
+    gradeM.push(persons[i].grade);
+  }
+}
+var reducerM = ((cv,pv,index,gradeM)=> {
+  cv+=pv;
+  if(index === gradeM.length - 1){
+    return cv/gradeM.length;
+  }
+  else{
+    return cv;
+  }
+})
+let avgGradeM= gradeM.reduce(reducerM);
+console.log(avgGradeM);
 // Find the average grade of female
-
+let gradeF=[];
+for(i=0;i< persons.length; i++){
+  if(persons[i].sex.includes('F')){
+    gradeF.push(persons[i].grade);
+  }
+}
+var reducerF = ((cv,pv,index,gradeF)=> {
+  cv+=pv;
+  if(index === gradeF.length - 1){
+    return cv/gradeF.length;
+  }
+  else{
+    return cv;
+  }
+})
+let avgGradeF= gradeF.reduce(reducerF);
+console.log(avgGradeF);
 // Find the highest grade
+console.log(grade.sort((a,b)=>a-b));
+let highestGrade = grade.pop(grade.sort((a,b)=>a-b));
+console.log(highestGrade);
 
 // Find the highest grade in male
-
+let highestGradeM = gradeM.pop(gradeM.sort((a,b)=>a-b));
+console.log(highestGradeM);
 // Find the highest grade in female
-
+let highestGradeF = gradeF.pop(gradeF.sort((a,b)=>a-b));
+console.log(highestGradeF);
 // Find the highest grade for people whose name starts with 'J' or 'P'
+let gradeJP =[];
+for(i=0; i<persons.length; i++){
+  if(persons[i].name.includes('J') || persons[i].name.includes('P')){
+    gradeJP.push(persons[i].grade);
+  }
+}
+console.log(gradeJP);
+var reducer = ((cv,pv,index,gradeJP)=> {
+  cv+=pv;
+  if(index === gradeJP.length - 1){
+    return cv/gradeJP.length;
+  }
+  else{
+    return cv;
+  }
+})
+let avgGradeJP= gradeJP.reduce(reducer);
+console.log(avgGradeJP);
 
 const fruitBasket = [
   'banana',
@@ -51,7 +123,10 @@ that fruit has appeared in the array. Store it in new variable fruitsObj
 Output: 
 {banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1}
 */
-
+const fruitsObj=fruitBasket.reduce((acc,currFruit)=>{
+  return {...acc,[currFruit] : (acc[currFruit] || 0)+1}
+},{})
+console.log(fruitsObj);
 /* 
 
 Use the fruitBasket array to create an array of array. Each array will contain two values name of fruit and number of times
@@ -61,7 +136,8 @@ Output:
 
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
-
+const entries = Object.entries(fruitsObj);
+console.log(entries);
 const data = [
   [1, 2, 3],
   [4, 5, 6],
@@ -70,8 +146,10 @@ const data = [
 ];
 
 // Using reduce flat data array
+let flat= data.reduce((acc,cv)=> acc.concat(cv),[]);
+  console.log(flat);
 
-const dataTwo = [
+  const dataTwo = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9],
@@ -79,7 +157,8 @@ const dataTwo = [
 ];
 
 // Using reduce flat dataTwo array
-
+let flat2= data.reduce((acc,cv)=> acc.concat(cv),[]);
+  console.log(flat2);
 /*
 
 Create these functions which accepts a number value and returns a number value:
@@ -93,13 +172,37 @@ Create these functions which accepts a number value and returns a number value:
 let pipeline = [
   increment,
   double,
-  decrement,
+  // decrement,
   decrement,
   double,
   triple,
-  half,
-  increment,
+  half
 ];
+function increment(number){
+  return number + 1;
+}
+let inc=pipeline.reduce(increment);
+
+
+function double(number){
+  return number*2;
+}
+let dub= pipeline.reduce(double);
+
+function decrement(number){
+  return number-1;
+}
+let dec= pipeline.reduce(decrement);
+
+function triple(number){
+  return number*3;
+}
+let trip= pipeline.reduce(triple);
+
+function half(number){
+  return number/2;
+}
+let hf= pipeline.reduce(half);
 
 /*
 Using the pipeline variable that contains the collection of functions, taking the initial value 3 find the output.
@@ -128,5 +231,30 @@ let pipeline2 = [
   increment,
   triple,
 ];
+function increment(number){
+  return number + 1;
+}
+let inc2=pipeline.reduce(increment);
+
+
+function double(number){
+  return number*2;
+}
+let dub2= pipeline.reduce(double);
+
+function decrement(number){
+  return number-1;
+}
+let dec2= pipeline.reduce(decrement);
+
+function triple(number){
+  return number*3;
+}
+let trip2= pipeline.reduce(triple);
+
+function half(number){
+  return number/2;
+}
+let hf2= pipeline.reduce(half);
 
 // Find the output using pipeline2 the initial value if 8
