@@ -172,37 +172,41 @@ Create these functions which accepts a number value and returns a number value:
 let pipeline = [
   increment,
   double,
-  // decrement,
+  decrement,
   decrement,
   double,
   triple,
   half
 ];
 function increment(number){
-  return number + 1;
+  return number+1;
 }
-let inc=pipeline.reduce(increment);
+
 
 
 function double(number){
   return number*2;
 }
-let dub= pipeline.reduce(double);
+
 
 function decrement(number){
   return number-1;
 }
-let dec= pipeline.reduce(decrement);
+
 
 function triple(number){
   return number*3;
 }
-let trip= pipeline.reduce(triple);
+
 
 function half(number){
-  return number/2;
+  return Math.round(number/2);
 }
-let hf= pipeline.reduce(half);
+
+console.log(pipeline.reduce((acc,cv)=>{
+  acc= cv(acc);
+  return acc;
+},3));
 
 /*
 Using the pipeline variable that contains the collection of functions, taking the initial value 3 find the output.
@@ -231,30 +235,13 @@ let pipeline2 = [
   increment,
   triple,
 ];
-function increment(number){
-  return number + 1;
-}
-let inc2=pipeline.reduce(increment);
+
+console.log(pipeline2.reduce((acc,cv)=>{
+  acc=cv(acc);
+  return acc;
+},8));
 
 
-function double(number){
-  return number*2;
-}
-let dub2= pipeline.reduce(double);
 
-function decrement(number){
-  return number-1;
-}
-let dec2= pipeline.reduce(decrement);
-
-function triple(number){
-  return number*3;
-}
-let trip2= pipeline.reduce(triple);
-
-function half(number){
-  return number/2;
-}
-let hf2= pipeline.reduce(half);
 
 // Find the output using pipeline2 the initial value if 8
