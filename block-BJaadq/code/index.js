@@ -31,30 +31,39 @@ function everyone() {
 console.log(every1);
 
 
-const nameWithS =(arr, ...args) => {
-  let argState = Array.isArray(args[0]) ? args[0] : args;
-  let pulled = arr.filter((v, i) => !argState.includes(v));
-  arr.length = 0;
-  pulled.forEach(v => arr.push(v));
-  return pulled;
-};
-console.log(nameWithS(every1,'s','S'));
+function nameWithS(){
+  let allPeople =every1;
+  return allPeople.filter((name)=>
+  name.toLowerCase().includes('s'));
+
+}
+
 
  
 function nameWithA() {
-  // your code goes here
+  let allPeople =every1;
+  return allPeople.filter((name)=>
+  name.toLowerCase().includes('s'));
 }
 
 function surnameWithS() {
-  // your code goes here
+  let allPeople =every1;
+  return allPeople.filter((name)=>
+  name.split(' ')[1].toLowerCase().includes('s'));
 }
 
 function surnameWithA() {
-  // your code goes here
+  let allPeople =every1;
+  return allPeople.filter((name)=>
+  name.split(' ')[1].toLowerCase().includes('a'));
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  let final={};
+  got.houses.forEach((house)=>{
+    final[house.name] = house.people.map((p)=>p.name);
+  })
+  return final;
 }
 
 // Testing your result after writing your function
@@ -69,7 +78,7 @@ console.log(everyone());
 // Output should be
 //["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "King Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy", "Margaery (Tyrell) Baratheon", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn", "Edmure Tully", "Brynden Tully", "Olenna (Redwyne) Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
-// console.log(nameWithS(), 'with s');
+console.log(nameWithS(), 'with s');
 // Output should be
 // ["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "Stannis Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn"]
 
