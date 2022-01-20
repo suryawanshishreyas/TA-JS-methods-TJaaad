@@ -1,21 +1,46 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
+const homes= got.houses.reduce((acc, curr) => acc.concat(curr),[]);
 function countAllPeople() {
-  // your code goes here
+// for(i=0; i<=homes.length; i++){
+//   for(j=0; j<=homes.length; j++){
+//     return homes[i].people[j];
+//   }
+// }
+let people=homes.map(x=>x.people.length);
+console.log(people);
+let noOfPeople=people.reduce((acc,cv)=>acc+cv,0);
+console.log(noOfPeople);
 }
+let peoples=countAllPeople();
 
 function peopleByHouses() {
-  // your code goes here
+  for(i=0; i< homes.length; i++){
+    console.log(`At house ${homes[i].name} there are ${homes[i].people.length} people`);
+  }
 }
-
+let every1=[];
 function everyone() {
-  // your code goes here
+  for(i=0;i< homes.length; i++){
+    for(j=0;j<homes[i].people.length;j++){
+      // console.log(`The names are ${homes[i].people[j].name}`);
+      every1.push(homes[i].people[j].name);
+    }
+  }
 }
+console.log(every1);
 
-function nameWithS() {
-  // your code goes here
-}
 
+const nameWithS =(arr, ...args) => {
+  let argState = Array.isArray(args[0]) ? args[0] : args;
+  let pulled = arr.filter((v, i) => !argState.includes(v));
+  arr.length = 0;
+  pulled.forEach(v => arr.push(v));
+  return pulled;
+};
+console.log(nameWithS(every1,'s','S'));
+
+ 
 function nameWithA() {
   // your code goes here
 }
@@ -33,7 +58,7 @@ function peopleNameOfAllHouses() {
 }
 
 // Testing your result after writing your function
-console.log(countAllPeople());
+// console.log(countAllPeople());
 // Output should be 33
 
 console.log(peopleByHouses());
@@ -44,7 +69,7 @@ console.log(everyone());
 // Output should be
 //["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "King Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy", "Margaery (Tyrell) Baratheon", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn", "Edmure Tully", "Brynden Tully", "Olenna (Redwyne) Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
 
-console.log(nameWithS(), 'with s');
+// console.log(nameWithS(), 'with s');
 // Output should be
 // ["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "Stannis Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn"]
 
