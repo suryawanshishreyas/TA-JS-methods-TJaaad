@@ -1,15 +1,29 @@
 // NOTE: You can only use the (reduce) array method to solve this exercise:
-
+const homes= got.houses.reduce((acc, curr) => acc.concat(curr),[]);
 function countAllPeople() {
-  // your code goes here
+  let people=homes.map(x=>x.people.length);
+console.log(people);
+let noOfPeople=people.reduce((acc,cv)=>acc+cv,0);
+console.log(noOfPeople);
 }
+let people =countAllPeople();
 
-function peopleByHouses() {
-  // your code goes here
-}
+// function peopleByHouses() {
+//   let people= got.houses.forEach(house=>{
+//     house.name + house.people;
+//   })
+//   let peopleHouse = people.reduce((acc,curr)=>{
+//     acc.concat(curr),[]
+//   })
+//   return peopleHouse;
+// }
 
+const h=got.houses.reduce((acc,curr)=> acc.concat(curr),[]);
 function everyone() {
-  // your code goes here
+  let ev1 = h.map(v=>v.people.name);
+  console.log(ev1);
+  return ev1;
+
 }
 
 function nameWithS() {
@@ -36,7 +50,7 @@ function peopleNameOfAllHouses() {
 console.log(countAllPeople());
 // Output should be 33
 
-console.log(peopleByHouses());
+// console.log(peopleByHouses());
 // Output should be
 //{Arryns: 1, Baratheons: 6, Dothrakis: 1, Freys: 1, Greyjoys: 3, Lannisters: 4,Redwyne: 1,Starks: 8,Targaryens: 2,Tullys: 4,Tyrells: 2}
 
